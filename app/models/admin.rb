@@ -5,4 +5,9 @@ class Admin < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :email, :password, presence: true
+
+  def created_by?(user)
+    return false unless user
+	  id == user.id
+  end
 end

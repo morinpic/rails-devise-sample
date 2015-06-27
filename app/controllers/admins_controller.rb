@@ -21,6 +21,28 @@ class AdminsController < ApplicationController
     end
   end
 
+  def edit
+    @admin = Admin.find(params[:id])
+  end
+
+  def update
+    @admin = Admin.find(params[:id])
+    if @admin.update(admin_params)
+      redirect_to admins_path, notice: '管理者情報を更新しました'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @admin = Admin.find(params[:id])
+    if @admin.destroy
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def admin_params
