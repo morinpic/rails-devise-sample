@@ -20,7 +20,9 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
             <li><%= link_to 'admins', admins_path  %></li>
+            <li><%= link_to 'ログアウト', destroy_admin_session_path, :method => :delete %></li>
           </ul>
+          <p class="navbar-text navbar-right"><%= current_admin.email %></p>
         </div>
       </div>
     </div>

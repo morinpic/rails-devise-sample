@@ -1,1 +1,23 @@
-admins/index
+<h2>Adminユーザー</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>id</th>
+      <th>email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @admins.each.with_index(1) do |a, i| %>
+      <tr>
+        <th scope="row"><%= i %></th>
+        <td><%= a.id %></td>
+        <td><%= a.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="well well-sm">
+  <%= link_to 'new_admin', new_admin_path, class: 'btn btn-default' %>
+</div>
