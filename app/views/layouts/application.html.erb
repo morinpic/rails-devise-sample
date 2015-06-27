@@ -7,10 +7,37 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= current_admin.email if admin_signed_in? %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= yield %>
 
+  <% if admin_signed_in? %>
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to 'hogehoge', root_path, class: 'navbar-brand' %>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'admins', admins_path  %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="container">
+    <% flash.each do |name, msg| %>
+      <div class="alert alert-<%= name == "notice" ? "success" : "error" %>">
+        <a class="close" data-dismiss="alert">×</a>
+        <%= msg %>
+      </div>
+    <% end %>
+    <%= yield %>
+  </div>
+
+  <footer class="container">
+    <p>&copy; hogehoge</p>
+  </footer>
 </body>
 </html>

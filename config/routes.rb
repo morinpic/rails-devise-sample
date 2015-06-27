@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'home/index'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -11,9 +9,10 @@ Rails.application.routes.draw do
     passwords:     'admins/passwords'
   }
   devise_scope :admin do
-    get "log_in", :to => "admins/sessions#new"
+    get "login", :to => "admins/sessions#new"
   end
 
+  resources :admins
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
